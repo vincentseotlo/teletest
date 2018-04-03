@@ -16,6 +16,7 @@ class VerifyCsrfToken extends Middleware
 	"/api/dequeue/append",
 	"/api/dequeue/prepend",
 	"/api/dequeue/eject",
-	"/api/dequeue/pop"
+	"/api/dequeue/pop",
+	"/api/dequeue/close"
     ];
 }

@@ -132,7 +132,6 @@ class TeleForge extends Controller {
 	function close(Request $req){
 		$this->setup($req);
 		$this->DB->close();
-		return 'closed';
 	}
 	/*
 	* show: return the queue
