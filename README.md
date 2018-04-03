@@ -22,9 +22,9 @@ php artisan serve
 
 5. Here are valid urls to manipulate the queue
 
-5.1 POST 	http://127.0.0.1:8000/api/dequeue/append?input=<value>
+5.1 POST 	http://127.0.0.1:8000/api/dequeue/append?input="value"
 
-5.2 POST	http://127.0.0.1:8000/api/dequeue/prepend?input=<value>
+5.2 POST	http://127.0.0.1:8000/api/dequeue/prepend?input="value"
 
 5.3 DELETE	http://127.0.0.1:8000/api/dequeue/pop
 
