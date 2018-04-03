@@ -9,7 +9,7 @@ use App\Http\Controllers\Teleforge\Queue\Database;
 class TeleForge extends Controller {
 	private $DB = null;
 	/*
-	* this belongs in a middleware (really) ... since it's first before everything else
+	* basic setup. get session and init queue 
 	*/
 	function setup($req){ 
 		$sess = $req->session();
