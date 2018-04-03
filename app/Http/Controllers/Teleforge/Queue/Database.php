@@ -5,29 +5,53 @@ class Database{
         function __construct($sess){
                 $this->DB = $sess;
         }
+	/*
+	* exposes the session put
+	*/
         public function put($key, $value){
                 $this->DB->put($key, $value);
         }
+	/*
+	* exposes the session forget
+	*/
         public function forget($key){
 		$this->DB->forget($key);
 	}
+	/*
+	* each new node get a unique id/pointer
+	*/
 	public function generateId(){
 		$curr = $this->DB->get('serial');
 		$this->put("serial", $curr += 1);
 		return $curr;
 	}
+	/*
+	* the id of the tail node 
+	*/
 	public function getTail(){
 		return $this->DB->get('tail');
 	}
+	/*
+	* the id of the head node
+	*/
 	public function getHead(){
 		return $this->DB->get('head');
 	}
+	/*
+	* where to prepend
+	*/
 	public function setHead($head){
 		$this->DB->put('head', "". $head);
 	}
+	/*
+	* where to append next
+	*/
 	public function setTail($tail){
 		$this->DB->put('tail', "". $tail);
 	}
+	/*
+	* retrive the node, given id
+	*/
 	public function getNode($id){
 		$data = $this->DB->get("node" . $id . ".data"); 
 		$nextid = $this->DB->get("node" . $id . ".next"); 
@@ -43,7 +67,8 @@ class Database{
 		return $curr;
 	}
 	/**
-	*  @param session 
+	*  @param Node. 
+	*  save this node to session
 	*/
 	public function save($node){ // or simply store the whole as a json??
 		$this->DB->put("node" . $node->getId() . ".id", $node->getId());
@@ -67,7 +92,7 @@ class Database{
 		}
 	}
 	/**
-	*  @param session 
+	*  @param Node 
 	* delete this, and update prev and next 
 	*/
 	public function delete($node){
@@ -87,6 +112,9 @@ class Database{
 		$this->DB->forget("node" . $node->getId() . ".prev");
 		$this->DB->forget("node" . $node->getId());
 	}
+	/*
+	* init queue if it's not there
+	*/
 	public function init(){
 		if(! $this->DB->exists('serial')){
 			$this->put('serial', 1);
@@ -98,9 +126,12 @@ class Database{
 			$this->put('tail', 'None');
 		}
 	}
+	/*
+	* empty/reset queue
+	*/
 	public function close(){
 		$this->DB->flush();
-		return "reset done";
+		//return "reset done";
 	}
 	public function all(){
 		return $this->DB->all();
