@@ -1,5 +1,5 @@
 <?php
-namespace Teleforge\Queue;
+namespace App\Http\Controllers\Teleforge\Queue;
 class Node{
 	/**
 	*  @var int 
@@ -33,13 +33,13 @@ class Node{
 	/**
 	* @return mixed
 	*/
-	public function getData (){
+	public function getData(){
 		return $this->data;
 	}
 	/**
 	*  @return null | Node
 	*/
-	public function getNext (){
+	public function getNext(){
 		return $this->next;
 	}
 	/**
@@ -51,13 +51,13 @@ class Node{
 	/**
 	* @param null | Node $next
 	*/
-	public function setNext ($next){
+	public function setNext($next){
 		$this->next = $next;
 	}
 	/**
 	* @return null | Node
 	*/
-	public function getPrevious (){
+	public function getPrevious(){
 		return $this->previous;
 	}
 	/**

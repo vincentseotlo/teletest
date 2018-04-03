@@ -13,5 +13,9 @@ class VerifyCsrfToken extends Middleware
      */
     protected $except = [
         //
+	"/api/dequeue/append",
+	"/api/dequeue/prepend",
+	"/api/dequeue/eject",
+	"/api/dequeue/pop"
     ];
 }
